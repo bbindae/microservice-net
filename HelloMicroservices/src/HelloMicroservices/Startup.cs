@@ -24,8 +24,16 @@ namespace HelloMicroservices
         public void Configure(IApplicationBuilder app)
         {
             app.UseOwin(buildFunc =>
-                buildFunc.UseNancy()
-                );
+            {
+                buildFunc(next => env =>
+                {
+                    System.Console.WriteLine("Get request");
+                    return next(env);
+                });
+                buildFunc.UseNancy();
+            });
+              
+                
         }
     }
 }
