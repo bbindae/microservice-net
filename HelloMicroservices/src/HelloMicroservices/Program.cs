@@ -18,7 +18,6 @@ namespace HelloMicroservices
                 .UseStartup<Startup>()
                 .Build();
 
-
             host.Run();
         }
     }
