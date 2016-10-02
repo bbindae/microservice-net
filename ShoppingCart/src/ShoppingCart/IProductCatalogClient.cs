@@ -1,6 +1,6 @@
 namespace ShoppingCart
 {
-    public interface IProdcutCatalogClient
+    public interface IProductCatalogClient
     {
         
     }
