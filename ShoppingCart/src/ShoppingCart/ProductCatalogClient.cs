@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -22,6 +23,19 @@ namespace ShoppingCart
                 httpClient.BaseAddress = new Uri(productcatlogBaseUrl);
                 return await httpClient.GetAsync(productResource).ConfigureAwait(false);
             }
+        }
+
+        private static async Task<IEnumerable<ShoppingCartItem>> ConvertToShoppingCartItems(HttpResponseMessage response)
+        {
+            
+        }
+
+        private class ProductCatalogProduct
+        {
+            public string ProductId {get;set;}
+            public string ProductName {get; set;}
+            public string ProductDescription {get; set;}
+            public Money Price {get; set;}
         }
     }
 }

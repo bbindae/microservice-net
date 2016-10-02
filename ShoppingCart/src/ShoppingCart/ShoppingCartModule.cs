@@ -24,6 +24,12 @@ namespace ShoppingCart
                     var userId = (int) parameters.userid;
 
                     var shoppingCart = shoppingCartStore.Get(userId);
+                    var shoppingCartItems = await productCatalog.GetShoppingCartItemsAsync(productcatalogIds)
+                                                .ConfigureAwait(false);
+                    
+                    
+                    shoppingCart.AddItems(shoppingCartItems, eventStore);
+                    shoppingCartStore.Save(shoppingCart);
                     
                     return shoppingCart;
                 }
